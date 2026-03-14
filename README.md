@@ -1,16 +1,27 @@
-## Hi there 👋
+![Gemini VTOL Preview](preview.png)
 
-<!--
-**Gemini-VTOL/Gemini-VTOL** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+## 🛸 Project Overview
+The Gemini VTOL is an experimental single-seat personal flight vehicle utilizing a ducted, contra-rotating dual-propeller system. 
+It is currently in the digital prototyping and simulation phase, utilizing WebGL and advanced flight dynamics engines to test weight-shift kinematics and thrust vectoring.
 
-Here are some ideas to get you started:
+## ⚙️ Technical Highlights
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+* **Propulsion:** Triple turboshaft configuration
+* **Lift System:** Contra-rotating 2-prop array
+* **Airframe:** Lightweight with a triangulated suspension footprint.
+* **Ducting:**  Carbon Fiber aerodynamic duct
+* **Flight Controls:** Articulated weight-shift pendulum. cyclic dynamics, collective and thrust-vectored yaw authority.
+* **Avionics:** Integrated HUD.
+
+## 📁 Repository Structure
+* `gemini_150.glb`: The 3D geometry and kinematic hierarchy for simulation testing.
+* `aircraft.json`: Physics configuration dictating mass distribution, IK control linkages, and thrust parameters.
+
+## 🛠️ Simulation Setup (GeoFS)
+To fly this craft in GeoFS:
+1. Ensure "Mix Roll/Yaw" is **disabled** in your simulator settings to prevent uncommanded flat spins.
+2. It is highly recommended to use **Mouse Control** for the Cyclic (Pitch/Roll) and keyboard inputs for Collective/Yaw.
+
+
+---
+*Designed and engineered by Howard.*
