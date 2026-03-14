@@ -1,0 +1,192 @@
+{
+  "name": "Gemini-150-VTOL",
+  "mass": 220,
+  "scale": 1,
+  "multirotor": true,
+  "camera": {
+    "position": [0, -0.4, 0.4]
+  },
+  "parts": [
+    {
+      "name": "Unsprung_Mass_Root",
+      "type": "root",
+      "position": [0, 0, -0.15], 
+      "mass": 220,
+      "comment": "Locks the 220kg COG slightly below the torque triangle for pendulum stability.",
+      "contactProperties": {
+        "compression": 0.254,
+        "damping": 0.8,
+        "spring": 1.2
+      },
+      "animations": [
+        {
+          "type": "translation",
+          "axis": "Z",
+          "value": "suspension",
+          "ratio": 0.254,
+          "comment": "Articulates the 254mm exposed piston travel."
+        }
+      ]
+    },
+    {
+      "name": "Propeller_Top_Animatable",
+      "type": "engine",
+      "position": [0, 0, 0.26],
+      "thrust": 1177.2,
+      "comment": "COL Origin 1. 1177.2N = ~120kg lift.",
+      "animations": [
+        {
+          "type": "rotation",
+          "axis": "Z",
+          "value": "rpm",
+          "ratio": 20
+        }
+      ]
+    },
+    {
+      "name": "Propeller_Bottom_Animatable",
+      "type": "engine",
+      "position": [0, 0, -0.26],
+      "thrust": 1177.2,
+      "comment": "COL Origin 2. Contra-rotating (negative ratio).",
+      "animations": [
+        {
+          "type": "rotation",
+          "axis": "Z",
+          "value": "rpm",
+          "ratio": -20
+        }
+      ]
+    },
+    {
+      "name": "JSpar_Pendulum_Pivot_Root",
+      "type": "part",
+      "position": [0, 0, -0.125],
+      "comment": "Inverse mapping to pitch and roll keeps the J-Spar vertical while the duct tilts.",
+      "animations": [
+        {
+          "type": "rotation",
+          "axis": "X",
+          "value": "pitch",
+          "ratio": -1
+        },
+        {
+          "type": "rotation",
+          "axis": "Y",
+          "value": "roll",
+          "ratio": 1
+        }
+      ]
+    },
+    {
+      "name": "Joystick_Cyclic_Animatable",
+      "type": "part",
+      "animations": [
+        {
+          "type": "rotation",
+          "axis": "X",
+          "value": "pitch",
+          "ratio": 0.25
+        },
+        {
+          "type": "rotation",
+          "axis": "Y",
+          "value": "roll",
+          "ratio": 0.25
+        }
+      ]
+    },
+    {
+      "name": "Collective_Lever_Animatable",
+      "type": "part",
+      "animations": [
+        {
+          "type": "rotation",
+          "axis": "X",
+          "value": "throttle",
+          "ratio": -0.35,
+          "comment": "Lifts the lever upwards as throttle increases."
+        }
+      ]
+    },
+    {
+      "name": "Rudder_Bar_Anim",
+      "type": "part",
+      "animations": [
+        {
+          "type": "translation",
+          "axis": "Y",
+          "value": "yaw",
+          "ratio": 0.15,
+          "comment": "Pushes the rudder bar forward/back along the rail."
+        }
+      ]
+    },
+    {
+      "name": "Bottom_Stator_Lower_20deg_Flap_0_Anim",
+      "type": "part",
+      "animations": [
+        {
+          "type": "rotation",
+          "axis": "Z",
+          "value": "yaw",
+          "ratio": 0.45,
+          "comment": "Vectors the thrust from the lower prop for yaw authority."
+        }
+      ]
+    },
+    {
+      "name": "Bottom_Stator_Lower_20deg_Flap_1_Anim",
+      "type": "part",
+      "animations": [
+        {
+          "type": "rotation",
+          "axis": "Z",
+          "value": "yaw",
+          "ratio": 0.45
+        }
+      ]
+    },
+    {
+      "name": "Bottom_Stator_Lower_20deg_Flap_2_Anim",
+      "type": "part",
+      "animations": [
+        {
+          "type": "rotation",
+          "axis": "Z",
+          "value": "yaw",
+          "ratio": 0.45
+        }
+      ]
+    }
+  ],
+  "instruments": {
+    "overlay": [
+      {
+        "type": "text",
+        "value": "airspeed",
+        "label": "SPD (kts)",
+        "position": {"x": 10, "y": 10}
+      },
+      {
+        "type": "text",
+        "value": "altitude",
+        "label": "ALT (ft)",
+        "position": {"x": 10, "y": 40}
+      },
+      {
+        "type": "text",
+        "value": "heading",
+        "label": "HDG",
+        "position": {"x": 10, "y": 70}
+      },
+      {
+        "type": "text",
+        "value": "throttle",
+        "label": "PWR (%)",
+        "position": {"x": 10, "y": 100},
+        "ratio": 100
+      }
+    ]
+  }
+}
